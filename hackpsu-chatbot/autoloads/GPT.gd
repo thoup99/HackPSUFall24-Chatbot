@@ -43,9 +43,9 @@ func send_request(question: String):
 	})
 	
 	
-	var send_request = request.request(url, headers, HTTPClient.METHOD_POST, body)
+	var sendt_request = request.request(url, headers, HTTPClient.METHOD_POST, body)
 	
-	if send_request != OK:
+	if sendt_request != OK:
 		print("There was an error processing the request.")
 	
 func _on_request_completed(_result, _response_code, _headers, body):

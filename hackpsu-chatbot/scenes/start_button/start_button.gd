@@ -10,9 +10,6 @@ func _ready() -> void:
 	animation_player.play("idle")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_button_button_up() -> void:

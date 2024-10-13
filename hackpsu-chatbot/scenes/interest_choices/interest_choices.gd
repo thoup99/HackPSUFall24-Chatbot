@@ -43,10 +43,6 @@ func generate_new_interest():
 func set_interest_labels():
 	for x in range(1, 5):
 		interest_buttons[x - 1].set_text(interest_dict[str(x)].capitalize())
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 	
 func _on_interest_button_clicked(id: int):
 	if id == 0:
