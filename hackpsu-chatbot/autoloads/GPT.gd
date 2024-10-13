@@ -1,6 +1,6 @@
 extends Node
 
-var api_key = "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"
+var api_key = "Enter Key Here"
 var url: String = "https://api.openai.com/v1/chat/completions"
 var temperature: float = 0.5
 var max_tokens: int = 1024
