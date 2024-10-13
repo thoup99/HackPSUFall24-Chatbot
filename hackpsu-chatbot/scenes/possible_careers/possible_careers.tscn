@@ -8,72 +8,81 @@
 [node name="PossibleCareers" type="Node2D"]
 script = ExtResource("1_lt612")
 
-[node name="ColorRect" type="TextureRect" parent="."]
-offset_right = 601.0
+[node name="ColorRectBackGround" type="ColorRect" parent="."]
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 607.0
+offset_bottom = 667.0
+color = Color(0, 0, 0, 0.572549)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 602.0
 offset_bottom = 663.0
 texture = ExtResource("2_2gxmn")
 expand_mode = 1
 
 [node name="MajorsLabel" type="Label" parent="."]
-offset_left = 63.0
+offset_left = 98.0
 offset_top = 10.0
-offset_right = 155.0
+offset_right = 190.0
 offset_bottom = 46.0
 theme = ExtResource("2_xv8d1")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Majors"
 
 [node name="JobsLabel" type="Label" parent="."]
-offset_left = 389.0
+offset_left = 399.0
 offset_top = 10.0
-offset_right = 455.0
+offset_right = 465.0
 offset_bottom = 46.0
 theme = ExtResource("2_xv8d1")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Jobs"
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = 27.0
+offset_left = 18.0
 offset_top = 49.0
-offset_right = 581.0
+offset_right = 583.0
 offset_bottom = 62.0
-color = Color(0.212305, 0.212305, 0.212305, 1)
+color = Color(0, 0, 0, 0.419608)
 
 [node name="ColorRect3" type="ColorRect" parent="."]
-offset_left = 270.0
-offset_top = 16.0
-offset_right = 284.0
-offset_bottom = 624.0
-color = Color(0.212305, 0.212305, 0.212305, 1)
+offset_left = 293.0
+offset_top = 14.0
+offset_right = 308.0
+offset_bottom = 643.0
+color = Color(0, 0, 0, 0.419608)
 
 [node name="IdButton1" parent="." instance=ExtResource("3_csxvj")]
-position = Vector2(14, 129)
+position = Vector2(32, 134)
 id = 1
 
 [node name="IdButton2" parent="." instance=ExtResource("3_csxvj")]
-position = Vector2(14, 283)
+position = Vector2(32, 302)
 id = 2
 
 [node name="IdButton3" parent="." instance=ExtResource("3_csxvj")]
-position = Vector2(19, 428)
+position = Vector2(32, 470)
 id = 3
 
 [node name="IdButton4" parent="." instance=ExtResource("3_csxvj")]
-position = Vector2(302, 79)
+position = Vector2(325, 79)
 id = 4
 
 [node name="IdButton5" parent="." instance=ExtResource("3_csxvj")]
-position = Vector2(305, 191)
+position = Vector2(325, 191)
 id = 5
 
 [node name="IdButton6" parent="." instance=ExtResource("3_csxvj")]
-position = Vector2(314, 302)
+position = Vector2(325, 302)
 id = 6
 
 [node name="IdButton7" parent="." instance=ExtResource("3_csxvj")]
-position = Vector2(315, 417)
+position = Vector2(325, 417)
 id = 7
 
 [node name="IdButton8" parent="." instance=ExtResource("3_csxvj")]
-position = Vector2(318, 524)
+position = Vector2(325, 524)
 id = 8
 
 [connection signal="clicked" from="IdButton1" to="." method="on_id_button_clicked"]

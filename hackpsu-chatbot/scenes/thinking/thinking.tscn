@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b283ukcncdikf"]
+[gd_scene load_steps=8 format=3 uid="uid://b283ukcncdikf"]
 
 [ext_resource type="Theme" uid="uid://70hskfqdsfpy" path="res://assets/fonts/Roboto/RobotoTheme.tres" id="1_2l75n"]
 [ext_resource type="Script" path="res://scenes/thinking/thinking.gd" id="1_ygw1o"]
 [ext_resource type="Texture2D" uid="uid://bouirlbygypwr" path="res://assets/images/guy.png" id="2_xmgyb"]
+[ext_resource type="Texture2D" uid="uid://0adqdblgs3si" path="res://assets/images/question_mark.png" id="4_6gec8"]
 
 [sub_resource type="Animation" id="Animation_cvvkj"]
 length = 0.001
@@ -17,6 +18,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["Thinking."]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("QuestionMark:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("QuestionMark:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_0b3f0"]
@@ -33,6 +58,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": ["Thinking", "Thinking.", "Thinking..", "Thinking..."]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("QuestionMark:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.466667, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 6.28319, 6.28319, 12.5664, 12.5664]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("QuestionMark:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.466667, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1.25, 1.25), Vector2(1.03947, 1.03947), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3lsjx"]
@@ -64,6 +113,17 @@ offset_right = 288.0
 offset_bottom = 158.0
 theme = ExtResource("1_2l75n")
 text = "Thinking."
+
+[node name="QuestionMark" type="Node2D" parent="."]
+position = Vector2(194, -107)
+
+[node name="TextureRect" type="TextureRect" parent="QuestionMark"]
+offset_left = -43.0
+offset_top = -44.0
+offset_right = 44.0
+offset_bottom = 43.0
+texture = ExtResource("4_6gec8")
+expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
