@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://b283ukcncdikf"]
+
+[ext_resource type="Theme" uid="uid://70hskfqdsfpy" path="res://assets/fonts/Roboto/RobotoTheme.tres" id="1_2l75n"]
+[ext_resource type="Script" path="res://scenes/thinking/thinking.gd" id="1_ygw1o"]
+
+[sub_resource type="Animation" id="Animation_0b3f0"]
+resource_name = "thinking"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["Thinking", "Thinking.", "Thinking..", "Thinking..."]
+}
+
+[sub_resource type="Animation" id="Animation_cvvkj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Thinking."]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3lsjx"]
+_data = {
+"RESET": SubResource("Animation_cvvkj"),
+"thinking": SubResource("Animation_0b3f0")
+}
+
+[node name="Thinking" type="Node2D"]
+script = ExtResource("1_ygw1o")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 337.0
+offset_bottom = 196.0
+color = Color(0.737255, 0.592157, 0.290196, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 88.0
+offset_top = 19.0
+offset_right = 255.0
+offset_bottom = 61.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 63.0
+offset_top = 100.0
+offset_right = 288.0
+offset_bottom = 158.0
+theme = ExtResource("1_2l75n")
+text = "Thinking."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3lsjx")
+}

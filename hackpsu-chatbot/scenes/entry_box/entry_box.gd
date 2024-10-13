@@ -11,6 +11,7 @@ signal submitted
 
 func set_prompt(new_prompt: String):
 	prompt_label.text = new_prompt
+	inline_edit.text = ""
 
 func _on_submit_button_button_up() -> void:
 	text = inline_edit.text
