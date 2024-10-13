@@ -11,13 +11,14 @@ var skills: String
 var user_name = "Me"
 var user_color = Color.ORANGE
 
-var gpt_name = "System"
+var gpt_name = "Job Blitz Assistant"
 var gpt_color = Color.BLUE
 
 @onready var response_label := %Label
 @onready var line_edit := $LineEdit
 @onready var question_mark := $QuestionMark
 @onready var animation_player := $AnimationPlayer
+@onready var scroll_container := $ScrollContainer
 
 signal close
 
@@ -25,11 +26,16 @@ func _ready() -> void:
 	animation_player.play("thinking")
 	question_mark.visible = false
 
-func add_message(from: String, message: String):
-	if response_label.text != "":
-		response_label.text += "\n"
-		
-	response_label.text += "["+from+"]: " + message
+func add_message(from: String, message: String, color: Color):
+	if response_label.get_parsed_text() != "":
+		response_label.append_text("\n\n")
+	
+	response_label.push_color(color)
+	response_label.append_text("["+from+"]: ")
+	
+	response_label.push_color(Color.WHITE)
+	response_label.append_text(message)
+	
 	
 func clear_history():
 	response_label.text = ""
@@ -45,7 +51,7 @@ func generate_first_answer(prompt: String):
 	
 	var message: String = Gpt.last_message
 	
-	add_message(gpt_name, message)
+	add_message(gpt_name, message, gpt_color)
 	
 	
 func load_interest_and_skills(in_interest: String, in_skills: String):
@@ -58,7 +64,7 @@ func _on_send_button_button_up() -> void:
 	if Gpt.current_status == Gpt.STATUS.REQUESTING:
 		return
 	
-	add_message(user_name, line_edit.text)
+	add_message(user_name, line_edit.text, user_color)
 	question_mark.visible = true
 	
 	Gpt.send_request(line_edit.text)
@@ -66,7 +72,7 @@ func _on_send_button_button_up() -> void:
 	
 	await Gpt.recieved_response
 	
-	add_message(gpt_name, Gpt.last_message)
+	add_message(gpt_name, Gpt.last_message, gpt_color)
 	question_mark.visible = false
 	
 func _on_close_button_button_up() -> void:

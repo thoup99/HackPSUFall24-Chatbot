@@ -1,6 +1,6 @@
 extends Node
 
-var api_key = "Enter Key Here"
+var api_key = "Enter API Key"
 var url: String = "https://api.openai.com/v1/chat/completions"
 var temperature: float = 0.5
 var max_tokens: int = 1024
