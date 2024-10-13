@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cp74fqwnokxyl"]
+[gd_scene load_steps=9 format=3 uid="uid://cp74fqwnokxyl"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_40jav"]
 [ext_resource type="Gradient" uid="uid://ccm11e4j7jij7" path="res://assets/gradients/default_gradient.tres" id="2_p13td"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://davbjlsfdddgd" path="res://scenes/entry_box/entry_box.tscn" id="4_0tgih"]
 [ext_resource type="PackedScene" uid="uid://dh0hivlsw8nxa" path="res://scenes/start_button/start_button.tscn" id="4_6iq32"]
 [ext_resource type="PackedScene" uid="uid://b283ukcncdikf" path="res://scenes/thinking/thinking.tscn" id="6_jr8n2"]
+[ext_resource type="PackedScene" uid="uid://b34b7c6cj3wqs" path="res://scenes/interest_choices/interest_choices.tscn" id="7_yauxt"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lyg2p"]
 gradient = ExtResource("2_p13td")
@@ -38,6 +39,9 @@ position = Vector2(733, 357)
 
 [node name="Thinking" parent="." instance=ExtResource("6_jr8n2")]
 position = Vector2(770, 424)
+
+[node name="InterestChoices" parent="." instance=ExtResource("7_yauxt")]
+position = Vector2(580, 323)
 
 [connection signal="clicked" from="StartButton" to="." method="_on_start_button_clicked"]
 [connection signal="submitted" from="EntryBox" to="." method="_on_entry_box_submitted"]

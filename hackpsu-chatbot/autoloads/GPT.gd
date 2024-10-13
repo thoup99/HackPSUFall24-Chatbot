@@ -9,8 +9,12 @@ var model: String = "gpt-4o-mini"
 var messages = []
 var request: HTTPRequest
 
+var last_message: String
+
 enum STATUS {OPEN, REQUESTING}
 var current_status : STATUS = STATUS.OPEN
+
+signal recieved_response
 
 func _ready() -> void:
 	request = HTTPRequest.new()
@@ -20,7 +24,7 @@ func _ready() -> void:
 func clear_message_history():
 	messages.clear()
 	
-func dialogue_request(player_dialogue: String):
+func send_request(question: String):
 	if current_status == STATUS.REQUESTING:
 		print("GPT is currently requesting try again later")
 		return
@@ -28,7 +32,7 @@ func dialogue_request(player_dialogue: String):
 	current_status = STATUS.REQUESTING
 	messages.append({
 		"role": "user",
-		"content": player_dialogue
+		"content": question
 		})
 		
 	var body = JSON.stringify({
@@ -58,3 +62,4 @@ func _on_request_completed(_result, _response_code, _headers, body):
 	
 	print(message)
 	current_status = STATUS.OPEN
+	recieved_response.emit()
