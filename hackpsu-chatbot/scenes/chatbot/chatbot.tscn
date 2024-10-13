@@ -52,10 +52,17 @@ offset_top = 204.0
 offset_right = 938.0
 offset_bottom = 503.0
 theme = ExtResource("2_gegqe")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
 
-[node name="Label" type="Label" parent="ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
-text = "TempText: TempAnser"
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1320, 0)
+layout_mode = 2
+text = "TempText: TempAnswer"
 autowrap_mode = 3
 
 [node name="LineEdit" type="LineEdit" parent="."]

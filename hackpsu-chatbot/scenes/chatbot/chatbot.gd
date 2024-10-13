@@ -11,13 +11,13 @@ var skills: String
 var user_name = "Me"
 var gpt_name = "System"
 
-@onready var response_label := $ScrollContainer/HBoxContainer/VBoxContainer/Label
+@onready var response_label := %Label
 @onready var line_edit := $LineEdit
 
 signal close
 
 func add_message(from: String, message: String):
-	if response_label.text == "":
+	if response_label.text != "":
 		response_label.text += "\n"
 		
 	response_label.text += "["+from+"]: " + message

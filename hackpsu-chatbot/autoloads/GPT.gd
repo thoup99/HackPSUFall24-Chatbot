@@ -57,7 +57,7 @@ func _on_request_completed(_result, _response_code, _headers, body):
 	#Add Chat gpt response to messages
 	messages.append({
 		"role": "system",
-		"message": message
+		"content": message
 	})
 	
 	print(message)
