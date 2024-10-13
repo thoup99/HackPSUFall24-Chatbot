@@ -24,7 +24,7 @@ offset_bottom = 1080.0
 texture = SubResource("GradientTexture2D_lyg2p")
 
 [node name="LabelContainer" type="Node2D" parent="."]
-position = Vector2(695, 121)
+position = Vector2(695, 70)
 
 [node name="Label" type="Label" parent="LabelContainer"]
 offset_right = 40.0
