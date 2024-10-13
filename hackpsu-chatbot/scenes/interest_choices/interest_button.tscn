@@ -18,3 +18,5 @@ offset_bottom = 94.0
 theme = ExtResource("2_btlja")
 text = "TEXT OPTION HERE"
 autowrap_mode = 3
+
+[connection signal="button_up" from="ColorRect/Button" to="." method="_on_button_button_up"]

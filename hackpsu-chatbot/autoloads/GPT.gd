@@ -61,5 +61,6 @@ func _on_request_completed(_result, _response_code, _headers, body):
 	})
 	
 	print(message)
+	last_message = message
 	current_status = STATUS.OPEN
 	recieved_response.emit()

@@ -39,3 +39,9 @@ id = 4
 
 [node name="InterestButtonNone" parent="." instance=ExtResource("2_vxhuh")]
 position = Vector2(236, 319)
+
+[connection signal="clicked" from="InterestButton1" to="." method="_on_interest_button_clicked"]
+[connection signal="clicked" from="InterestButton2" to="." method="_on_interest_button_clicked"]
+[connection signal="clicked" from="InterestButton3" to="." method="_on_interest_button_clicked"]
+[connection signal="clicked" from="InterestButton4" to="." method="_on_interest_button_clicked"]
+[connection signal="clicked" from="InterestButtonNone" to="." method="_on_interest_button_clicked"]
