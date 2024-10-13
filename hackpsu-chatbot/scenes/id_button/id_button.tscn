@@ -1,21 +1,21 @@
 [gd_scene load_steps=3 format=3 uid="uid://whc30x5guvjx"]
 
-[ext_resource type="Script" path="res://scenes/interest_choices/interest_button.gd" id="1_8gqb1"]
-[ext_resource type="Theme" uid="uid://70hskfqdsfpy" path="res://assets/fonts/Roboto/RobotoTheme.tres" id="2_btlja"]
+[ext_resource type="Script" path="res://scenes/id_button/id_button.gd" id="1_pwi1r"]
+[ext_resource type="Theme" uid="uid://70hskfqdsfpy" path="res://assets/fonts/Roboto/RobotoTheme.tres" id="2_yal5w"]
 
-[node name="InterestButton" type="Node2D"]
-script = ExtResource("1_8gqb1")
+[node name="IdButton" type="Node2D"]
+script = ExtResource("1_pwi1r")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 246.0
-offset_bottom = 93.0
+offset_bottom = 94.0
 color = Color(0.860369, 0.860369, 0.860369, 1)
 
 [node name="Button" type="Button" parent="ColorRect"]
 layout_mode = 0
 offset_right = 246.0
 offset_bottom = 94.0
-theme = ExtResource("2_btlja")
+theme = ExtResource("2_yal5w")
 text = "TEXT OPTION HERE"
 autowrap_mode = 3
 

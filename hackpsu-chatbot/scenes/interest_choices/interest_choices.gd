@@ -4,7 +4,7 @@ class_name InterestChoices
 
 @onready var label := $Label
 
-@onready var interest_buttons: Array[InterestButton] = [$InterestButton1, $InterestButton2, $InterestButton3, $InterestButton4]
+@onready var interest_buttons: Array[IDButton] = [$InterestButton1, $InterestButton2, $InterestButton3, $InterestButton4]
 @onready var none_button:= $InterestButtonNone
 
 var interest: String
@@ -37,7 +37,6 @@ func generate_new_interest():
 	await Gpt.recieved_response
 	var message: String = Gpt.last_message
 	
-	print(message)
 	interest_dict = JSON.parse_string(message)
 	
 	

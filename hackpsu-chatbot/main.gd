@@ -2,7 +2,7 @@ extends Node2D
 
 var node_jail_cords:= Vector2(-1000, -1000)
 
-enum UICOMPONENTS {START, ENTRY, THINKING, INTEREST_CHOICES}
+enum UICOMPONENTS {START, ENTRY, THINKING, INTEREST_CHOICES, POSSIBLE_CAREERS}
 
 enum STATES {START, INTEREST, SKILLS, INTEREST_EXPANDING, GENERATE_CAREERS, ONE_ON_ONE}
 var current_state: STATES = STATES.START
@@ -12,6 +12,7 @@ var after_thinking_state: STATES = STATES.INTEREST_EXPANDING
 @onready var entry_box: EntryBox = $EntryBox
 @onready var thinking: Thinking = $Thinking
 @onready var interest_choices: InterestChoices = $InterestChoices
+@onready var possible_careers: PossibleCareers = $PossibleCareers
 
 @onready var ui_components = {
 	UICOMPONENTS.START: {
@@ -29,6 +30,10 @@ var after_thinking_state: STATES = STATES.INTEREST_EXPANDING
 	UICOMPONENTS.INTEREST_CHOICES: {
 		"node": interest_choices,
 		"default_position": Vector2(580, 323)
+	},
+	UICOMPONENTS.POSSIBLE_CAREERS: {
+		"node": possible_careers,
+		"default_position": Vector2(658, 298)
 	}
 }
 
@@ -43,6 +48,7 @@ func _ready() -> void:
 	jail(UICOMPONENTS.ENTRY)
 	jail(UICOMPONENTS.THINKING)
 	jail(UICOMPONENTS.INTEREST_CHOICES)
+	jail(UICOMPONENTS.POSSIBLE_CAREERS)
 	#Gpt.dialogue_request("Why is patrick webster bad at spelling patryck?")
 
 func unjail(ui_comp: UICOMPONENTS):
@@ -98,7 +104,19 @@ func _on_interest_choices_interest_generated() -> void:
 		
 		if expanded_runs > max_expanded_runs:
 			current_state = STATES.GENERATE_CAREERS
-			pass #To Impliment
+			
+			jail(UICOMPONENTS.INTEREST_CHOICES)
+			unjail(UICOMPONENTS.THINKING)
+			
+			possible_careers.load_interest_and_skills(interest, skills)
+			possible_careers.generate_careers()
+			await Gpt.recieved_response
+			possible_careers.set_button_labels()
+			
+			current_state = STATES.GENERATE_CAREERS
+			jail(UICOMPONENTS.THINKING)
+			unjail(UICOMPONENTS.POSSIBLE_CAREERS)
+			return
 			
 		
 	jail(UICOMPONENTS.INTEREST_CHOICES)

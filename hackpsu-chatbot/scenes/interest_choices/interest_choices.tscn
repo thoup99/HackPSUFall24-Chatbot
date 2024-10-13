@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b34b7c6cj3wqs"]
 
 [ext_resource type="Script" path="res://scenes/interest_choices/interest_choices.gd" id="1_82gg4"]
-[ext_resource type="PackedScene" uid="uid://whc30x5guvjx" path="res://scenes/interest_choices/interest_button.tscn" id="2_vxhuh"]
+[ext_resource type="PackedScene" uid="uid://whc30x5guvjx" path="res://scenes/id_button/id_button.tscn" id="2_vxhuh"]
 [ext_resource type="Theme" uid="uid://70hskfqdsfpy" path="res://assets/fonts/Roboto/RobotoTheme.tres" id="3_3fqpf"]
 
 [node name="InterestChoices" type="Node2D"]

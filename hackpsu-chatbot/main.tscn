@@ -45,6 +45,7 @@ position = Vector2(770, 424)
 position = Vector2(580, 323)
 
 [node name="PossibleCareers" parent="." instance=ExtResource("8_8fu4x")]
+position = Vector2(658, 298)
 
 [connection signal="clicked" from="StartButton" to="." method="_on_start_button_clicked"]
 [connection signal="submitted" from="EntryBox" to="." method="_on_entry_box_submitted"]

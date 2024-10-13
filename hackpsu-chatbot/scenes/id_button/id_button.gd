@@ -1,6 +1,6 @@
 extends Node2D
 
-class_name InterestButton
+class_name IDButton
 
 @export var id: int = 0
 
