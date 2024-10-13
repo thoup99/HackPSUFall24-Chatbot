@@ -9,7 +9,8 @@ var interest: String
 var skills: String
 var careers_dict: Dictionary
 
-signal careers_generated
+signal career_selected(text: String)
+signal major_selected(text: String)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,6 +43,13 @@ func set_majors_labels():
 	for x in range(1, 4):
 		major_buttons[x-1].set_text(careers_dict["m" + str(x)].capitalize())
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func on_id_button_clicked(id: int):
+	if id == 0:
+		pass
+		
+	elif id < 4:
+		major_selected.emit(careers_dict["m" + str(id)].capitalize())
+	elif id < 9:
+		career_selected.emit(careers_dict["j" + str(id - 3)].capitalize())
+	else:
+		print("Should not be here. PossibleCareers: Unexpected value: "+ str(id))

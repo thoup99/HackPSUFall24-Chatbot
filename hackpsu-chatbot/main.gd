@@ -2,7 +2,7 @@ extends Node2D
 
 var node_jail_cords:= Vector2(-1000, -1000)
 
-enum UICOMPONENTS {START, ENTRY, THINKING, INTEREST_CHOICES, POSSIBLE_CAREERS}
+enum UICOMPONENTS {START, ENTRY, THINKING, INTEREST_CHOICES, POSSIBLE_CAREERS, CHATBOT}
 
 enum STATES {START, INTEREST, SKILLS, INTEREST_EXPANDING, GENERATE_CAREERS, ONE_ON_ONE}
 var current_state: STATES = STATES.START
@@ -13,6 +13,7 @@ var after_thinking_state: STATES = STATES.INTEREST_EXPANDING
 @onready var thinking: Thinking = $Thinking
 @onready var interest_choices: InterestChoices = $InterestChoices
 @onready var possible_careers: PossibleCareers = $PossibleCareers
+@onready var chatbot: ChatBot = $Chatbot
 
 @onready var ui_components = {
 	UICOMPONENTS.START: {
@@ -34,6 +35,10 @@ var after_thinking_state: STATES = STATES.INTEREST_EXPANDING
 	UICOMPONENTS.POSSIBLE_CAREERS: {
 		"node": possible_careers,
 		"default_position": Vector2(658, 298)
+	},
+	UICOMPONENTS.CHATBOT: {
+		"node": chatbot,
+		"default_position": Vector2(670, 268)
 	}
 }
 
@@ -49,7 +54,7 @@ func _ready() -> void:
 	jail(UICOMPONENTS.THINKING)
 	jail(UICOMPONENTS.INTEREST_CHOICES)
 	jail(UICOMPONENTS.POSSIBLE_CAREERS)
-	#Gpt.dialogue_request("Why is patrick webster bad at spelling patryck?")
+	jail(UICOMPONENTS.CHATBOT)
 
 func unjail(ui_comp: UICOMPONENTS):
 	ui_components[ui_comp]["node"].position = ui_components[ui_comp]["default_position"]
@@ -61,6 +66,9 @@ func jail(ui_comp: UICOMPONENTS):
 
 func _on_start_button_clicked() -> void:
 	if current_state == STATES.START:
+		skills = ""
+		interest = ""
+		
 		jail(UICOMPONENTS.START)
 		entry_box.set_prompt("What all interest you?")
 		unjail(UICOMPONENTS.ENTRY)
@@ -83,6 +91,7 @@ func _on_entry_box_submitted() -> void:
 		unjail(UICOMPONENTS.THINKING)
 		
 		expanded_runs = 1
+		interest_choices.set_run_number(expanded_runs)
 		interest_choices.load_interest_and_skills(interest, skills)
 		interest_choices.generate_new_interest()
 		await Gpt.recieved_response
@@ -132,3 +141,41 @@ func _on_interest_choices_interest_generated() -> void:
 	current_state = STATES.INTEREST_EXPANDING
 	jail(UICOMPONENTS.THINKING)
 	unjail(UICOMPONENTS.INTEREST_CHOICES)
+
+func _on_possible_careers_career_selected(text: String) -> void:
+	jail(UICOMPONENTS.POSSIBLE_CAREERS)
+	unjail(UICOMPONENTS.THINKING)
+	
+	chatbot.clear_history()
+	chatbot.load_interest_and_skills(interest, skills)
+	var prompt = "What are the key statistics for the role of "+ text
+	chatbot.generate_first_answer(prompt)
+	
+	await Gpt.recieved_response
+	
+	current_state = STATES.ONE_ON_ONE
+	jail(UICOMPONENTS.THINKING)
+	unjail(UICOMPONENTS.CHATBOT)
+
+
+func _on_possible_careers_major_selected(text: String) -> void:
+	jail(UICOMPONENTS.POSSIBLE_CAREERS)
+	unjail(UICOMPONENTS.THINKING)
+	
+	chatbot.clear_history()
+	chatbot.load_interest_and_skills(interest, skills)
+	var prompt = "What can I expect to learn in the " + text + " major program, how will this major set me up for the future, and what are the educational requirements?"
+	chatbot.generate_first_answer(prompt)
+	
+	await Gpt.recieved_response
+	
+	current_state = STATES.ONE_ON_ONE
+	jail(UICOMPONENTS.THINKING)
+	unjail(UICOMPONENTS.CHATBOT)
+
+func _on_chatbot_close() -> void:
+	if current_state == STATES.ONE_ON_ONE:
+		jail(UICOMPONENTS.CHATBOT)
+		unjail(UICOMPONENTS.START)
+		
+		current_state = STATES.START

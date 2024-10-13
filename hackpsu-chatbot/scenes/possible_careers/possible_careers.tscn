@@ -73,3 +73,12 @@ id = 7
 [node name="IdButton8" parent="." instance=ExtResource("3_csxvj")]
 position = Vector2(318, 524)
 id = 8
+
+[connection signal="clicked" from="IdButton1" to="." method="on_id_button_clicked"]
+[connection signal="clicked" from="IdButton2" to="." method="on_id_button_clicked"]
+[connection signal="clicked" from="IdButton3" to="." method="on_id_button_clicked"]
+[connection signal="clicked" from="IdButton4" to="." method="on_id_button_clicked"]
+[connection signal="clicked" from="IdButton5" to="." method="on_id_button_clicked"]
+[connection signal="clicked" from="IdButton6" to="." method="on_id_button_clicked"]
+[connection signal="clicked" from="IdButton7" to="." method="on_id_button_clicked"]
+[connection signal="clicked" from="IdButton8" to="." method="on_id_button_clicked"]

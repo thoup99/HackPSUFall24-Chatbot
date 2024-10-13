@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cp74fqwnokxyl"]
+[gd_scene load_steps=11 format=3 uid="uid://cp74fqwnokxyl"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_40jav"]
 [ext_resource type="Gradient" uid="uid://ccm11e4j7jij7" path="res://assets/gradients/default_gradient.tres" id="2_p13td"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b283ukcncdikf" path="res://scenes/thinking/thinking.tscn" id="6_jr8n2"]
 [ext_resource type="PackedScene" uid="uid://b34b7c6cj3wqs" path="res://scenes/interest_choices/interest_choices.tscn" id="7_yauxt"]
 [ext_resource type="PackedScene" uid="uid://wqjn5kfux0as" path="res://scenes/possible_careers/possible_careers.tscn" id="8_8fu4x"]
+[ext_resource type="PackedScene" uid="uid://b8in87lbd5oa0" path="res://scenes/chatbot/chatbot.tscn" id="9_mse2f"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lyg2p"]
 gradient = ExtResource("2_p13td")
@@ -47,6 +48,12 @@ position = Vector2(580, 323)
 [node name="PossibleCareers" parent="." instance=ExtResource("8_8fu4x")]
 position = Vector2(658, 298)
 
+[node name="Chatbot" parent="." instance=ExtResource("9_mse2f")]
+position = Vector2(670, 268)
+
 [connection signal="clicked" from="StartButton" to="." method="_on_start_button_clicked"]
 [connection signal="submitted" from="EntryBox" to="." method="_on_entry_box_submitted"]
 [connection signal="interest_generated" from="InterestChoices" to="." method="_on_interest_choices_interest_generated"]
+[connection signal="career_selected" from="PossibleCareers" to="." method="_on_possible_careers_career_selected"]
+[connection signal="major_selected" from="PossibleCareers" to="." method="_on_possible_careers_major_selected"]
+[connection signal="close" from="Chatbot" to="." method="_on_chatbot_close"]
