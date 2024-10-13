@@ -40,14 +40,13 @@ func generate_first_answer(prompt: String):
 	
 	Gpt.clear_message_history()
 	Gpt.send_request(question)
-	question_mark.visible = true
 	
 	await Gpt.recieved_response
 	
 	var message: String = Gpt.last_message
 	
 	add_message(gpt_name, message)
-	question_mark.visible = false
+	
 	
 func load_interest_and_skills(in_interest: String, in_skills: String):
 	interest = in_interest
@@ -60,6 +59,7 @@ func _on_send_button_button_up() -> void:
 		return
 	
 	add_message(user_name, line_edit.text)
+	question_mark.visible = true
 	
 	Gpt.send_request(line_edit.text)
 	line_edit.text = ""
@@ -67,6 +67,7 @@ func _on_send_button_button_up() -> void:
 	await Gpt.recieved_response
 	
 	add_message(gpt_name, Gpt.last_message)
+	question_mark.visible = false
 	
 func _on_close_button_button_up() -> void:
 	close.emit()

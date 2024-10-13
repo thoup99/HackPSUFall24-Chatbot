@@ -1,15 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2my5t75ju8rv"]
+[gd_scene load_steps=3 format=3 uid="uid://c2my5t75ju8rv"]
+
+[ext_resource type="Script" path="res://scenes/Particles/confetti.gd" id="1_bpgyg"]
 
 [sub_resource type="Curve" id="Curve_a1dyx"]
 _data = [Vector2(0.0786517, 0.516483), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Confetti" type="Node2D"]
+script = ExtResource("1_bpgyg")
 
 [node name="Red" type="CPUParticles2D" parent="."]
 emitting = false
 amount = 16
 lifetime = 7.06
+one_shot = true
 explosiveness = 0.6
 randomness = 0.2
 local_coords = true
@@ -25,8 +29,10 @@ scale_amount_curve = SubResource("Curve_a1dyx")
 color = Color(1, 0, 0, 1)
 
 [node name="Green" type="CPUParticles2D" parent="."]
+emitting = false
 amount = 16
 lifetime = 2.5
+one_shot = true
 explosiveness = 0.6
 randomness = 0.2
 local_coords = true
@@ -42,8 +48,10 @@ scale_amount_curve = SubResource("Curve_a1dyx")
 color = Color(0.423529, 1, 0, 1)
 
 [node name="Blue" type="CPUParticles2D" parent="."]
+emitting = false
 amount = 16
 lifetime = 2.5
+one_shot = true
 explosiveness = 0.6
 randomness = 0.2
 local_coords = true
@@ -61,6 +69,7 @@ color = Color(0.423529, 0.054902, 1, 1)
 [node name="Purple" type="CPUParticles2D" parent="."]
 emitting = false
 amount = 16
+one_shot = true
 explosiveness = 0.6
 randomness = 0.2
 local_coords = true
@@ -78,8 +87,10 @@ scale_amount_curve = SubResource("Curve_a1dyx")
 color = Color(0.623529, 0, 0.862745, 1)
 
 [node name="Real Purp" type="CPUParticles2D" parent="."]
+emitting = false
 amount = 16
 lifetime = 2.5
+one_shot = true
 explosiveness = 0.6
 randomness = 0.2
 local_coords = true
@@ -95,8 +106,10 @@ scale_amount_curve = SubResource("Curve_a1dyx")
 color = Color(0.776471, 0.0196078, 1, 1)
 
 [node name="Real Red" type="CPUParticles2D" parent="."]
+emitting = false
 amount = 16
 lifetime = 2.5
+one_shot = true
 explosiveness = 0.6
 randomness = 0.2
 local_coords = true

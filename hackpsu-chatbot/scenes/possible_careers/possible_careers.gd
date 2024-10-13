@@ -4,6 +4,8 @@ class_name PossibleCareers
 
 @onready var major_buttons: Array[IDButton] = [$IdButton1, $IdButton2, $IdButton3]
 @onready var jobs_buttons: Array[IDButton] = [$IdButton4, $IdButton5, $IdButton6, $IdButton7, $IdButton8]
+@onready var confettiParticles: Array[ParticleConfetti] = [$Confetti, $Confetti2]
+@onready var audio_player := $AudioStreamPlayer
 
 var interest: String
 var skills: String
@@ -12,9 +14,6 @@ var careers_dict: Dictionary
 signal career_selected(text: String)
 signal major_selected(text: String)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
 func load_interest_and_skills(in_interest: String, in_skills: String):
 	interest = in_interest
@@ -42,6 +41,11 @@ func set_job_labels():
 func set_majors_labels():
 	for x in range(1, 4):
 		major_buttons[x-1].set_text(careers_dict["m" + str(x)].capitalize())
+		
+func celebrate():
+	for confetti_particle in confettiParticles:
+		confetti_particle.play()
+	audio_player.play()
 
 func on_id_button_clicked(id: int):
 	if id == 0:

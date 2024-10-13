@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cp74fqwnokxyl"]
+[gd_scene load_steps=12 format=3 uid="uid://cp74fqwnokxyl"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_40jav"]
 [ext_resource type="Gradient" uid="uid://ccm11e4j7jij7" path="res://assets/gradients/default_gradient.tres" id="2_p13td"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b34b7c6cj3wqs" path="res://scenes/interest_choices/interest_choices.tscn" id="7_yauxt"]
 [ext_resource type="PackedScene" uid="uid://wqjn5kfux0as" path="res://scenes/possible_careers/possible_careers.tscn" id="8_8fu4x"]
 [ext_resource type="PackedScene" uid="uid://b8in87lbd5oa0" path="res://scenes/chatbot/chatbot.tscn" id="9_mse2f"]
+[ext_resource type="AudioStream" uid="uid://hbog6bqcfweh" path="res://assets/audio/music/marimba-tropical-african-travel-game-197517.mp3" id="10_vpv6m"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lyg2p"]
 gradient = ExtResource("2_p13td")
@@ -29,6 +30,7 @@ position = Vector2(695, 70)
 [node name="Label" type="Label" parent="LabelContainer"]
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_tttie")
 theme_override_font_sizes/font_size = 100
 text = "Job Blitz"
@@ -52,6 +54,8 @@ position = Vector2(658, 298)
 position = Vector2(670, 268)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_vpv6m")
+autoplay = true
 
 [connection signal="clicked" from="StartButton" to="." method="_on_start_button_clicked"]
 [connection signal="submitted" from="EntryBox" to="." method="_on_entry_box_submitted"]

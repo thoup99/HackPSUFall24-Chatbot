@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://wqjn5kfux0as"]
+[gd_scene load_steps=7 format=3 uid="uid://wqjn5kfux0as"]
 
 [ext_resource type="Script" path="res://scenes/possible_careers/possible_careers.gd" id="1_lt612"]
 [ext_resource type="Texture2D" uid="uid://cuf41mjhd26o1" path="res://assets/images/gradient2.png" id="2_2gxmn"]
 [ext_resource type="Theme" uid="uid://70hskfqdsfpy" path="res://assets/fonts/Roboto/RobotoTheme.tres" id="2_xv8d1"]
 [ext_resource type="PackedScene" uid="uid://whc30x5guvjx" path="res://scenes/id_button/id_button.tscn" id="3_csxvj"]
+[ext_resource type="PackedScene" uid="uid://c2my5t75ju8rv" path="res://scenes/Particles/confetti.tscn" id="5_wr7k8"]
+[ext_resource type="AudioStream" uid="uid://c2jqvy0umg0dh" path="res://assets/audio/sfx/clapping_applause.mp3" id="6_b0fkm"]
 
 [node name="PossibleCareers" type="Node2D"]
 script = ExtResource("1_lt612")
@@ -84,6 +86,18 @@ id = 7
 [node name="IdButton8" parent="." instance=ExtResource("3_csxvj")]
 position = Vector2(325, 524)
 id = 8
+
+[node name="Confetti" parent="." instance=ExtResource("5_wr7k8")]
+rotation = -0.174533
+scale = Vector2(10, 10)
+
+[node name="Confetti2" parent="." instance=ExtResource("5_wr7k8")]
+position = Vector2(607, -4)
+rotation = 0.174533
+scale = Vector2(10, 10)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_b0fkm")
 
 [connection signal="clicked" from="IdButton1" to="." method="on_id_button_clicked"]
 [connection signal="clicked" from="IdButton2" to="." method="on_id_button_clicked"]

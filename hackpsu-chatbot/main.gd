@@ -125,6 +125,7 @@ func _on_interest_choices_interest_generated() -> void:
 			current_state = STATES.GENERATE_CAREERS
 			jail(UICOMPONENTS.THINKING)
 			unjail(UICOMPONENTS.POSSIBLE_CAREERS)
+			possible_careers.celebrate()
 			return
 			
 		
