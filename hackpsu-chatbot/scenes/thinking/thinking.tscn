@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b283ukcncdikf"]
+[gd_scene load_steps=9 format=3 uid="uid://b283ukcncdikf"]
 
 [ext_resource type="Theme" uid="uid://70hskfqdsfpy" path="res://assets/fonts/Roboto/RobotoTheme.tres" id="1_2l75n"]
 [ext_resource type="Script" path="res://scenes/thinking/thinking.gd" id="1_ygw1o"]
-[ext_resource type="Texture2D" uid="uid://bouirlbygypwr" path="res://assets/images/guy.png" id="2_xmgyb"]
+[ext_resource type="Texture2D" uid="uid://nafevo8n4mpo" path="res://assets/images/gradient1.png" id="2_gk5bk"]
+[ext_resource type="Texture2D" uid="uid://bu4jls26flrys" path="res://assets/images/Guy_transparent.png" id="3_0ov1m"]
 [ext_resource type="Texture2D" uid="uid://0adqdblgs3si" path="res://assets/images/question_mark.png" id="4_6gec8"]
 
 [sub_resource type="Animation" id="Animation_cvvkj"]
@@ -93,29 +94,46 @@ _data = {
 [node name="Thinking" type="Node2D"]
 script = ExtResource("1_ygw1o")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 337.0
-offset_bottom = 196.0
-color = Color(0.737255, 0.592157, 0.290196, 1)
+[node name="ColorRectBorder" type="ColorRect" parent="."]
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 339.0
+offset_bottom = 198.0
+color = Color(0, 0, 0, 0.576471)
 
 [node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 337.0
+offset_bottom = 196.0
+texture = ExtResource("2_gk5bk")
+expand_mode = 1
+
+[node name="GuyBackground" type="ColorRect" parent="."]
+offset_left = 44.0
+offset_top = -10.0
+offset_right = 290.0
+offset_bottom = 45.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRectGuy" type="TextureRect" parent="."]
 offset_left = 85.0
-offset_top = -120.0
+offset_top = -209.0
 offset_right = 243.0
-offset_bottom = 78.0
-texture = ExtResource("2_xmgyb")
+offset_bottom = 26.0
+texture = ExtResource("3_0ov1m")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="."]
-offset_left = 63.0
-offset_top = 100.0
-offset_right = 288.0
-offset_bottom = 158.0
+offset_left = 26.0
+offset_top = 81.0
+offset_right = 284.0
+offset_bottom = 139.0
 theme = ExtResource("1_2l75n")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
 text = "Thinking."
 
 [node name="QuestionMark" type="Node2D" parent="."]
-position = Vector2(194, -107)
+position = Vector2(194, -159)
 
 [node name="TextureRect" type="TextureRect" parent="QuestionMark"]
 offset_left = -43.0

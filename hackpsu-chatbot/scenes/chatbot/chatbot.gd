@@ -39,7 +39,7 @@ func generate_first_answer(prompt: String):
 	add_message(gpt_name, message)
 	
 func load_interest_and_skills(in_interest: String, in_skills: String):
-	interest = interest
+	interest = in_interest
 	skills = in_skills
 
 
