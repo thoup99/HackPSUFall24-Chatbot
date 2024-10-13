@@ -31,7 +31,7 @@ func dialogue_request(player_dialogue: String):
 		"content": player_dialogue
 		})
 		
-	var body = JSON.new().stringify({
+	var body = JSON.stringify({
 		"messages": messages,
 		"temperature": temperature,
 		"max_tokens": max_tokens,
@@ -44,7 +44,7 @@ func dialogue_request(player_dialogue: String):
 	if send_request != OK:
 		print("There was an error processing the request.")
 	
-func _on_request_completed(result, response_code, headers, body):
+func _on_request_completed(_result, _response_code, _headers, body):
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	var response = json.get_data()
@@ -52,7 +52,7 @@ func _on_request_completed(result, response_code, headers, body):
 	
 	#Add Chat gpt response to messages
 	messages.append({
-		"role": response["choices"][0]["role"],
+		"role": "system",
 		"message": message
 	})
 	

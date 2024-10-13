@@ -1,6 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://cp74fqwnokxyl"]
+[gd_scene load_steps=7 format=3 uid="uid://cp74fqwnokxyl"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_40jav"]
+[ext_resource type="Gradient" uid="uid://ccm11e4j7jij7" path="res://assets/gradients/default_gradient.tres" id="2_p13td"]
+[ext_resource type="FontFile" uid="uid://bfjlftl75h4an" path="res://assets/fonts/bullpen-3d/Bullpen3D.ttf" id="3_tttie"]
+[ext_resource type="PackedScene" uid="uid://davbjlsfdddgd" path="res://scenes/entry_box/entry_box.tscn" id="4_0tgih"]
+[ext_resource type="PackedScene" uid="uid://dh0hivlsw8nxa" path="res://scenes/start_button/start_button.tscn" id="4_6iq32"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lyg2p"]
+gradient = ExtResource("2_p13td")
+fill_from = Vector2(0.362385, 1)
+fill_to = Vector2(0.844037, 0.155963)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_40jav")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_lyg2p")
+
+[node name="LabelContainer" type="Node2D" parent="."]
+position = Vector2(695, 121)
+
+[node name="Label" type="Label" parent="LabelContainer"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("3_tttie")
+theme_override_font_sizes/font_size = 100
+text = "Job Blitz"
+
+[node name="StartButton" parent="." instance=ExtResource("4_6iq32")]
+position = Vector2(928, 506)
+
+[node name="EntryBox" parent="." instance=ExtResource("4_0tgih")]
+visible = false
+position = Vector2(733, 357)
+
+[connection signal="clicked" from="StartButton" to="." method="_on_start_button_clicked"]

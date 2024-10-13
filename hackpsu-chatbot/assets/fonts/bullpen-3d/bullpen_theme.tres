@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c1ima0855a2qv"]
+
+[ext_resource type="FontFile" uid="uid://bfjlftl75h4an" path="res://assets/fonts/bullpen-3d/Bullpen3D.ttf" id="1_f84i2"]
+
+[resource]
+default_font = ExtResource("1_f84i2")
+default_font_size = 60
