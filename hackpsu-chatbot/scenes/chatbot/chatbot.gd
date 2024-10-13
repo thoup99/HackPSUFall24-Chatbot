@@ -45,9 +45,13 @@ func load_interest_and_skills(in_interest: String, in_skills: String):
 
 
 func _on_send_button_button_up() -> void:
+	if Gpt.current_status == Gpt.STATUS.REQUESTING:
+		return
+	
 	add_message(user_name, line_edit.text)
 	
 	Gpt.send_request(line_edit.text)
+	line_edit.text = ""
 	
 	await Gpt.recieved_response
 	
