@@ -26,7 +26,6 @@ func _ready() -> void:
 	question_mark.visible = false
 
 func add_message(from: String, message: String):
-	question_mark.visible = false
 	if response_label.text != "":
 		response_label.text += "\n"
 		
@@ -48,6 +47,7 @@ func generate_first_answer(prompt: String):
 	var message: String = Gpt.last_message
 	
 	add_message(gpt_name, message)
+	question_mark.visible = false
 	
 func load_interest_and_skills(in_interest: String, in_skills: String):
 	interest = in_interest
