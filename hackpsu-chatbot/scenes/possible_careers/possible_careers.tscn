@@ -1,16 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://wqjn5kfux0as"]
+[gd_scene load_steps=5 format=3 uid="uid://wqjn5kfux0as"]
 
 [ext_resource type="Script" path="res://scenes/possible_careers/possible_careers.gd" id="1_lt612"]
+[ext_resource type="Texture2D" uid="uid://cuf41mjhd26o1" path="res://assets/images/gradient2.png" id="2_2gxmn"]
 [ext_resource type="Theme" uid="uid://70hskfqdsfpy" path="res://assets/fonts/Roboto/RobotoTheme.tres" id="2_xv8d1"]
 [ext_resource type="PackedScene" uid="uid://whc30x5guvjx" path="res://scenes/id_button/id_button.tscn" id="3_csxvj"]
 
 [node name="PossibleCareers" type="Node2D"]
 script = ExtResource("1_lt612")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 offset_right = 601.0
 offset_bottom = 663.0
-color = Color(1, 0.752941, 0.388235, 1)
+texture = ExtResource("2_2gxmn")
+expand_mode = 1
 
 [node name="MajorsLabel" type="Label" parent="."]
 offset_left = 63.0

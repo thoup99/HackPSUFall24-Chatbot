@@ -51,6 +51,8 @@ position = Vector2(658, 298)
 [node name="Chatbot" parent="." instance=ExtResource("9_mse2f")]
 position = Vector2(670, 268)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="clicked" from="StartButton" to="." method="_on_start_button_clicked"]
 [connection signal="submitted" from="EntryBox" to="." method="_on_entry_box_submitted"]
 [connection signal="interest_generated" from="InterestChoices" to="." method="_on_interest_choices_interest_generated"]
